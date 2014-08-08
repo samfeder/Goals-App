@@ -40,9 +40,9 @@ feature "the home page" do
     it "should allow users to modify goals" do
       click_link "lose weight"
       click_button "Edit Goal"
-      edit_goal("lose weight by eating better",
+      edit_goal({title: "lose weight by eating better",
                 content: "eating more fruits and vegetables has been proven
-                          in double blind studies conducted world-wide that fat                           content is burned.")
+                          in double blind studies conducted world-wide that fat                           content is burned."})
       expect(page).to have_content "double blind studies"
       click_link "user1"
       expect(page).to have_content "lose weight by eating better"
@@ -51,9 +51,8 @@ feature "the home page" do
     it "should allow users to complete goals" do
       click_link "lose weight"
       click_button "Edit Goal"
-      edit_goal("lose weight by eating better",
-                content: "Lost so much weight.",
-                completed: true)
+      edit_goal({title: "lose weight by eating better",
+                content: "Lost so much weight.",completed: true})
       expect(page).to have_content "Lost so much weight."
       click_link "user1"
       expect(page).to have_content "lose weight by eating better (completed!)"

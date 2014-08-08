@@ -39,7 +39,6 @@ class GoalsController < ApplicationController
 
   def update
     @goal = Goal.find(params[:id])
-
     if @goal.update(goal_params)
       redirect_to goal_url(@goal)
     else

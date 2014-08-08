@@ -5,7 +5,7 @@
 <ul>
   <% @goals.each do |g| %>
     <li>
-      <a href="<%= goal_url(g) %>"><%= g.title %></a>
+      <a href="<%= goal_url(g) %>"><%= goal_title(g) %></a>
     </li>
   <% end %>
 </ul>

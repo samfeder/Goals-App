@@ -33,10 +33,11 @@ def add_goal(goal, content = nil, public = true)
   click_button "Create Goal"
 end
 
-def edit_goal(goal, content = nil, public = nil, completed = false)
-  fill_in 'Title', :with => goal
-  fill_in 'Description', :with => content
-  choose('Completed') if completed
-  choose('Private') unless public
+def edit_goal(options={})
+  fill_in 'Title', :with => options[:title]
+  fill_in 'Description', :with => options[:content]
+  check('completed') if options[:completed]
+  choose('Private') unless options[:public]
   click_button "Update Goal"
+  save_and_open_page
 end

@@ -20,23 +20,42 @@
   <label><strong>Description:</strong><br>
     <textarea name="goal[content]"><%= goal.content %></textarea>
   </label>
-<br>
-<strong>Status:</strong>
+
+  <br>
+
+  <strong>Status:</strong>
   <br>
   <label>Public
     <input type="radio"
            name="goal[public]"
            value="true"
            <%= "checked" if goal.public %>>
-</label><br>
-    <label>Private</input>
+  </label>
+
+  <br>
+
+  <label>Private
     <input type="radio"
            name="goal[public]"
            value="false"
            <%= "checked" if !goal.public %>>
+  </label>
 
-    </input>
-  <br>
+  <br><br>
+  <% if goal.persisted? %>
+  <input type="hidden"
+         name="goal[completed]"
+         value="false">
+  <label class="checkbox"
+         for="completed">Completed?</label>
+  <input id="completed"
+         type="checkbox"
+         name="goal[completed]"
+         value="true"
+         <%= "checked" if goal.completed %>>
+  <% end %>
+
+  <br><br>
 
   <button><%= button %></button>
 
