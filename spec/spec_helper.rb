@@ -39,5 +39,9 @@ def edit_goal(options={})
   check('completed') if options[:completed]
   choose('Private') unless options[:public]
   click_button "Update Goal"
-  save_and_open_page
+end
+
+def add_comment(comment)
+  fill_in 'comment', :with => comment
+  click_button "Add Comment"
 end

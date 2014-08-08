@@ -14,3 +14,17 @@
   <%= button_to "Create Goal", new_user_goal_url(@user), method: :get %>
 <% end %>
 <%= link_to "All Users", users_url %>
+
+<h2>Comments:</h2>
+
+<h3>Add Comment</h3>
+
+<%= render "comments/comment_form",
+           p_id: @user.id,
+           p_type: @user.class %>
+
+<% @comments.each do |c| %>
+  <h4><%= c.author.username %> says:</h4>
+  <p><%= c.content %></p>
+  <%= button_to "Delete Comment", comment_url(id: c.id), method: :delete %>
+<% end %>

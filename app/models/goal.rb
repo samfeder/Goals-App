@@ -4,6 +4,8 @@ class Goal < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :comments, as: :commentable
+
   scope :public_goal, -> { where(public: true) }
 
   private

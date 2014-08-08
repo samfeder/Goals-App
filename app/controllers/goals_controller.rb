@@ -5,11 +5,13 @@ class GoalsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @goals = ((@user == current_user) ? @user.goals : @user.public_goals)
+    @comments = @user.comments
   end
 
   def show
     @goal = Goal.find(params[:id])
     @user = @goal.user
+    @comments = @goal.comments
 
     if @goal.public || current_user == @user
       render :show

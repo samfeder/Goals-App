@@ -3,7 +3,24 @@ goal to <%= goal_title(@goal) %></h2>
 
 <span><%= @goal.content %></span>
 
+<br><br>
+
 <% if current_user == @user %>
   <%= button_to "Edit Goal", edit_goal_url(@goal), method: :get %>
   <%= button_to "Delete Goal", goal_url(@goal), method: :delete %>
 <% end %>
+
+<h2>Comments:</h2>
+
+<h3>Add Comment</h3>
+
+<%= render "comments/comment_form",
+            p_id: @goal.id,
+            p_type: @goal.class %>
+
+<% @comments.each do |c| %>
+  <h4><%= c.author.username %> says:</h4>
+  <p><%= c.content %></p>
+  <%= button_to "Delete Comment", comment_url(id: c.id), method: :delete %>
+<% end %>
+

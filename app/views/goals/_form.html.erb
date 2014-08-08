@@ -42,17 +42,20 @@
   </label>
 
   <br><br>
+
   <% if goal.persisted? %>
-  <input type="hidden"
-         name="goal[completed]"
-         value="false">
-  <label class="checkbox"
-         for="completed">Completed?</label>
-  <input id="completed"
-         type="checkbox"
-         name="goal[completed]"
-         value="true"
-         <%= "checked" if goal.completed %>>
+    <input type="hidden"
+           name="goal[completed]"
+           value="false">
+
+    <label class="checkbox"
+           for="completed">Completed?</label>
+
+    <input id="completed"
+           type="checkbox"
+           name="goal[completed]"
+           value="true"
+           <%= "checked" if goal.completed %>>
   <% end %>
 
   <br><br>
