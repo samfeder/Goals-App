@@ -48,13 +48,15 @@ end
 
 feature "signing in" do
 
+  before(:each) do
+    wipe_users
+    sign_up("testapp")
+    click_button "Sign Out"
+    sign_in("testapp")
+  end
+
   it "shows username on the homepage after login" do
-    before(:each) do
-      wipe_users
-      sign_up("testapp")
-      click_button "Sign Out"
-      sign_in("testapp")
-    end
+    expect(page).to have_content "testapp"
   end
 
   it "redirects to goal index page after sign in" do

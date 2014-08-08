@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_token
 
+  has_many :goals
+
   attr_reader :password
 
   def self.find_by_credentials(username, password)
@@ -24,6 +26,10 @@ class User < ActiveRecord::Base
     self.session_token = SecureRandom::urlsafe_base64(16)
     self.save!
     self.session_token
+  end
+
+  def public_goals
+    self.goals.public
   end
 
   private
