@@ -28,8 +28,10 @@ feature "the home page" do
     it "should allow users to delete goals" do
       click_link "eat better"
       click_button "Delete Goal"
-      expect(page).to_not have_content "eat better"
+      expect(page).to have_content "eat better"
       expect(page).to have_content "lose weight"
+      visit current_path
+      expect(page).to_not have_content "eat better"
     end
 
     it "should allow users to modify goals" do
