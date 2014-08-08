@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+  before_filter :ensure_signed_out, except: :index
+
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -9,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      redirect_to user_url(@user)
+      redirect_to user_goals_url(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new

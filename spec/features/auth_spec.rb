@@ -37,12 +37,12 @@ feature "signing out" do
     expect(page).to have_content "Sign In"
   end
 
-  it "cannot access user pages" do
-    visit goals_url
+  it "can access user pages when signed out" do
+    visit users_url
+    click_link "testapp's goals"
     expect(page).not_to have_content "Your Goals"
-    expect(page).to have_content "Cannot access page"
+    expect(page).to have_content "testapp's Goals"
     expect(page).to have_content "Sign In"
-    expect(page).not_to have_content "testapp"
   end
 end
 

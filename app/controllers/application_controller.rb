@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_signed_out
-    redirect_to goals_url if signed_in?
+    redirect_to user_goals_url(current_user) if signed_in?
   end
 end

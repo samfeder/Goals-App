@@ -1,0 +1,9 @@
+<h2><%= link_to "#{@user.username}", user_goals_url(@user) %>'s
+goal to <%= @goal.title %></h2>
+
+<span><%= @goal.content %></span>
+
+<% if current_user == @user %>
+  <%= button_to "Edit Goal", edit_goal_url(@goal), method: :get %>
+  <%= button_to "Delete Goal", goal_url(@goal), method: :delete %>
+<% end %>

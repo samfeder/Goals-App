@@ -4,7 +4,7 @@ class Goal < ActiveRecord::Base
 
   belongs_to :user
 
-  scope :public, -> { where(public: true) }
+  scope :public_goal, -> { where(public: true) }
 
   private
 

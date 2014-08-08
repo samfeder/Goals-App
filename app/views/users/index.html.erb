@@ -1,0 +1,9 @@
+<h2>Goals App Users:</h2>
+
+<ul>
+  <% @users.each do |u| %>
+    <li>
+      <a href="<%= user_goals_url(u) %>"><%= u.username %>'s goals</a>
+    </li>
+  <% end %>
+</ul>

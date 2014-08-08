@@ -26,16 +26,17 @@ def sign_out
 end
 
 def add_goal(goal, content = nil, public = true)
-  visit new_goal_url
+  click_button "Create Goal"
   fill_in 'Title', :with => goal
   fill_in 'Description', :with => content
   choose('private') unless public
   click_button "Create Goal"
 end
 
-def edit_goal(goal, content=nil, public=nil)
+def edit_goal(goal, content = nil, public = nil, completed = false)
   fill_in 'Title', :with => goal
   fill_in 'Description', :with => content
-  choose('private') unless public
+  choose('Completed') if completed
+  choose('Private') unless public
   click_button "Update Goal"
 end

@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def public_goals
-    self.goals.public
+    self.goals.public_goal
   end
 
   private
